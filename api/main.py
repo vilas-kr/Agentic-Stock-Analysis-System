@@ -13,13 +13,11 @@ async def home():
 async def analyze(user_query: str):
     try:
         result = await run_trading_assistant(user_query)
-        print(result)
         return result.model_dump()
 
     except Exception as e:
 
         error_message = str(e)
-        print(error_message)
         # API Key Errors
         if any(keyword in error_message.lower() for keyword in [
             "api key",
